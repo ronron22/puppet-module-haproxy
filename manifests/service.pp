@@ -1,9 +1,10 @@
 class haproxy::service (
 
-	$service_name   = hiera('service_name'),
-	$service_enable = hiera('service_enable'),
-	$service_ensure = hiera('service_ensure'),
-	$service_manage = hiera('service_manage'),
+	$service_name            = hiera('service_name'),
+	$service_enable          = hiera('service_enable'),
+	$service_ensure          = hiera('service_ensure'),
+	$service_manage          = hiera('service_manage'),
+	$configuration_directory = hiera('configuration_directory'),
 
 	) inherits haproxy {
 
@@ -12,12 +13,12 @@ class haproxy::service (
 	}
   if $service_manage == true {
     service { $service_name:
-		  ensure  => $service_ensure,
-      enable  => $service_enable,
-		  provider => systemd,
+		  ensure      => $service_ensure,
+      enable      => $service_enable,
+		  provider    => systemd,
       #hasstatus  => true,
       #hasrestart => true,
-      require => File['/etc/haproxy/haproxy.cfg'],
+      require     => File['/etc/haproxy/haproxy.cfg'],
     }
   }
 
