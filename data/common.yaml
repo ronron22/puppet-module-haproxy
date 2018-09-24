@@ -1,0 +1,7 @@
+---
+haproxy::service::service_name: 'haproxy'
+haproxy::service::service_enable: true
+haproxy::service::service_ensure: 'running'
+haproxy::service::service_manage: true
+
+haproxy::config::configuration_directory: '/etc/haproxy'
