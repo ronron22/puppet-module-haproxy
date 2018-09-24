@@ -4,7 +4,7 @@ class haproxy::service (
 	$service_enable          = hiera('service_enable'),
 	$service_ensure          = hiera('service_ensure'),
 	$service_manage          = hiera('service_manage'),
-	$configuration_directory = hiera('configuration_directory'),
+	$configuration_directory = hiera('haproxy::config::configuration_directory'),
 
 	) inherits haproxy {
 
@@ -18,7 +18,7 @@ class haproxy::service (
 		  provider    => systemd,
       #hasstatus  => true,
       #hasrestart => true,
-      require     => File['/etc/haproxy/haproxy.cfg'],
+      require     => File["${configuration_directory}haproxy.cfg"],
     }
   }
 
