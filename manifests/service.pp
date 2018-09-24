@@ -18,7 +18,6 @@ class haproxy::service (
 		  provider    => systemd,
       #hasstatus  => true,
       #hasrestart => true,
-      require     => File["${configuration_directory}haproxy.cfg"],
     }
   }
 
