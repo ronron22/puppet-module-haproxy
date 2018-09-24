@@ -1,10 +1,10 @@
-class postfix::install (
+class haproxy::install (
 
-	$postfix_packages = hiera('postfix_packages'),
+	$haproxy_packages = hiera('haproxy_packages'),
 
-	) inherits postfix {
+	) inherits haproxy {
         
-		$postfix_packages.each |String $package|{
+		$haproxy_packages.each |String $package|{
 			package { $package: 
 				ensure  =>  installed,
 			}
